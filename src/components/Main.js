@@ -38,7 +38,7 @@ const Main = ({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) => {
 
   useEffect(() => {
     getUserData();
-  });
+  }, []);
 
   return (
     <main className="main">
