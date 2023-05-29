@@ -2,9 +2,6 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const Card = ({
-  name,
-  link,
-  likes,
   onCardClick,
   onCardLike,
   onCardDelete,
@@ -32,10 +29,10 @@ const Card = ({
       <img
         onClick={handleClick}
         className="card__photo"
-        alt={name}
-        src={link}
+        alt={card.name}
+        src={card.link}
       />
-      <h2 className="card__title">{name}</h2>
+      <h2 className="card__title">{card.name}</h2>
       <div className="card__likes">
         <button
           aria-label="Нравится"
@@ -43,7 +40,7 @@ const Card = ({
           type="button"
           onClick={handleLikeClick}
         ></button>
-        <span className="card__likes-number">{likes}</span>
+        <span className="card__likes-number">{card.likes.length}</span>
       </div>
       {isOwn && (
         <button

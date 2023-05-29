@@ -4,11 +4,13 @@ const PopupWithForm = ({
   btnText,
   isOpen,
   onClose,
+  overlayClickClose,
   onSubmit,
+  isLoading,
   children,
 }) => {
   return (
-    <div className={`popup popup_type_${name} ${isOpen ? "popup_opened" : ""}`}>
+    <div className={`popup popup_type_${name} ${isOpen ? "popup_opened" : ""}`} onMouseDown={overlayClickClose}>
       <div className="popup__container">
         <button
           onClick={onClose}
@@ -25,7 +27,7 @@ const PopupWithForm = ({
           <h2 className="popup__head">{title}</h2>
           {children}
           <button className="popup__save-btn" type="submit">
-            {btnText}
+            {isLoading ? 'Сохранение...' : btnText}
           </button>
         </form>
       </div>

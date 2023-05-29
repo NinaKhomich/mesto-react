@@ -13,6 +13,19 @@ const Main = ({
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
+  const cardsElements = cards.map((card) => {
+    return (
+      <div key={card._id}>
+        <Card
+          card={card}
+          onCardClick={onCardClick}
+          onCardLike={onCardLike}
+          onCardDelete={onCardDelete}
+        />
+      </div>
+    );
+  })
+
   return (
     <main className="main">
       <section className="profile">
@@ -41,21 +54,7 @@ const Main = ({
         ></button>
       </section>
       <section aria-label="Фотографии профиля" className="cards">
-        {cards.map((card) => {
-          return (
-            <div key={card._id}>
-              <Card
-                name={card.name}
-                link={card.link}
-                likes={card.likes.length}
-                card={card}
-                onCardClick={onCardClick}
-                onCardLike={onCardLike}
-                onCardDelete={onCardDelete}
-              />
-            </div>
-          );
-        })}
+        {cardsElements}
       </section>
     </main>
   );
